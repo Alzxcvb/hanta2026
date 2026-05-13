@@ -192,23 +192,34 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
         </pattern>
       </defs>
 
-      <!-- Background dot grid (purely schematic — equirectangular projection) -->
+      <!-- Background dot grid (subtle) -->
       <rect width="1000" height="540" fill="url(#dots)"/>
 
-      <!-- Equator + meridian (visual anchors) -->
-      <line x1="0" y1="270" x2="1000" y2="270" stroke="#1a1a1f" stroke-width="1" stroke-dasharray="2,8"/>
-      <line x1="500" y1="0" x2="500" y2="540" stroke="#1a1a1f" stroke-width="1" stroke-dasharray="2,8"/>
-      <text x="14" y="266" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="9" fill="#3a3a40" letter-spacing="0.2em">EQUATOR</text>
-      <text x="504" y="14" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="9" fill="#3a3a40" letter-spacing="0.2em">0°</text>
-
-      <!-- Continental labels (correctly placed by lat/lng) -->
-      <g font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="10" fill="#2e2e34" letter-spacing="0.22em">
-        <text x="160" y="200">NORTH AMERICA</text>
-        <text x="295" y="380">SOUTH AMERICA</text>
-        <text x="545" y="320">AFRICA</text>
-        <text x="510" y="120">EUROPE</text>
-        <text x="430" y="525" fill="#26262a">ANTARCTICA</text>
+      <!-- Continent silhouettes (vertices computed from real lat/lng via equirectangular projection x=(lng+180)*1000/360, y=(90-lat)*540/180) -->
+      <g fill="#16171d" stroke="#26272f" stroke-width="0.6" stroke-linejoin="round">
+        <!-- North America -->
+        <path d="M 33,72 L 122,69 L 222,75 L 272,84 L 311,99 L 350,126 L 350,165 L 322,189 L 295,195 L 272,201 L 256,216 L 222,213 L 200,207 L 186,189 L 161,159 L 144,126 L 122,108 L 83,90 Z"/>
+        <!-- Central America + Caribbean nub -->
+        <path d="M 256,216 L 280,225 L 300,234 L 292,243 L 268,237 L 250,231 Z"/>
+        <!-- South America -->
+        <path d="M 292,243 L 360,252 L 403,261 L 405,288 L 392,321 L 375,357 L 350,393 L 328,420 L 311,438 L 297,432 L 297,402 L 290,360 L 283,318 L 280,285 L 286,261 Z"/>
+        <!-- Greenland (small, anchors the north) -->
+        <path d="M 410,57 L 440,54 L 450,72 L 444,93 L 425,99 L 411,84 Z"/>
+        <!-- Europe -->
+        <path d="M 475,141 L 503,135 L 524,141 L 549,150 L 567,153 L 583,135 L 597,117 L 611,87 L 600,69 L 561,72 L 528,87 L 503,105 L 486,114 L 475,123 Z"/>
+        <!-- Africa -->
+        <path d="M 486,159 L 528,153 L 567,156 L 597,168 L 623,189 L 633,213 L 631,243 L 617,279 L 600,315 L 582,348 L 564,371 L 549,374 L 533,360 L 519,336 L 503,300 L 489,264 L 478,225 L 478,189 Z"/>
+        <!-- Western Asia stub (Arabia + western Eurasia edge) -->
+        <path d="M 597,168 L 633,165 L 656,180 L 661,210 L 644,222 L 625,213 L 614,195 Z"/>
+        <!-- Antarctica strip -->
+        <path d="M 0,500 L 130,495 L 240,490 L 360,492 L 480,488 L 600,490 L 740,494 L 870,498 L 1000,500 L 1000,540 L 0,540 Z"/>
       </g>
+
+      <!-- Equator + prime meridian (subtle anchors) -->
+      <line x1="0" y1="270" x2="1000" y2="270" stroke="#202028" stroke-width="1" stroke-dasharray="2,8"/>
+      <line x1="500" y1="0" x2="500" y2="540" stroke="#202028" stroke-width="1" stroke-dasharray="2,8"/>
+      <text x="14" y="266" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="9" fill="#4a4a52" letter-spacing="0.2em">EQUATOR</text>
+      <text x="504" y="14" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="9" fill="#4a4a52" letter-spacing="0.2em">0°</text>
 
       <!-- Ship route: Ushuaia → Antarctic Peninsula → mid-Atlantic → Cape Town → Cabo Verde → Tenerife -->
       <path id="routePath" d="M 310,434 Q 318,470 327,463 Q 380,440 432,390 Q 500,400 551,371 Q 495,300 434,225 Q 440,200 454,184"
@@ -373,18 +384,28 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
     if(!c.affected) return;
     const {x,y} = proj(c.lng, c.lat);
     const ns = 'http://www.w3.org/2000/svg';
-    const circle = document.createElementNS(ns, 'circle');
-    circle.setAttribute('cx', x);
-    circle.setAttribute('cy', y);
-    circle.setAttribute('r', 3);
-    circle.setAttribute('fill', '#e8e6e1');
-    dotsG.appendChild(circle);
+    const ring = document.createElementNS(ns, 'circle');
+    ring.setAttribute('cx', x);
+    ring.setAttribute('cy', y);
+    ring.setAttribute('r', 5);
+    ring.setAttribute('fill', 'none');
+    ring.setAttribute('stroke', '#d4a017');
+    ring.setAttribute('stroke-width', '1');
+    ring.setAttribute('opacity', '0.55');
+    dotsG.appendChild(ring);
+    const dot = document.createElementNS(ns, 'circle');
+    dot.setAttribute('cx', x);
+    dot.setAttribute('cy', y);
+    dot.setAttribute('r', 2.5);
+    dot.setAttribute('fill', '#e8e6e1');
+    dotsG.appendChild(dot);
     const text = document.createElementNS(ns, 'text');
-    text.setAttribute('x', x + 6);
+    text.setAttribute('x', x + 8);
     text.setAttribute('y', y + 3);
     text.setAttribute('font-family', 'ui-monospace,SFMono-Regular,Menlo,monospace');
-    text.setAttribute('font-size', '9');
-    text.setAttribute('fill', '#8a877f');
+    text.setAttribute('font-size', '10');
+    text.setAttribute('font-weight', '600');
+    text.setAttribute('fill', '#d4a017');
     text.textContent = c.iso;
     dotsG.appendChild(text);
   });
