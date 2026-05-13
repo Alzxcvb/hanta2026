@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HANTA2026 — MV Hondius Andes Hantavirus Tracker</title>
+<meta name="description" content="Independent tracker of the 2026 MV Hondius Andes hantavirus cluster. Cases, deaths, ship route, and Polymarket odds. Sources: WHO, ECDC, CDC.">
+<meta name="theme-color" content="#0a0a0c">
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%230a0a0c'/><circle cx='8' cy='8' r='4' fill='%23d4a017'/></svg>">
+<style>
+:root{
+  --bg:#0a0a0c;
+  --panel:#111114;
+  --line:#1f1f24;
+  --ink:#e8e6e1;
+  --dim:#8a877f;
+  --faint:#3a3a40;
+  --amber:#d4a017;
+  --amber-dim:#8a6a10;
+  --rust:#c84630;
+  --probe:#6b6b6b;
+  --serif:Georgia,"Times New Roman",ui-serif,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Monaco,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body{min-height:100vh;padding:0 24px 80px}
+a{color:var(--amber);text-decoration:none;border-bottom:1px solid var(--amber-dim)}
+a:hover{color:#fff;border-color:#fff}
+hr{border:none;border-top:1px solid var(--line);margin:48px 0}
+
+.wrap{max-width:980px;margin:0 auto}
+
+/* ======== HEADER ======== */
+header{padding:28px 0 20px;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.brand{display:flex;flex-direction:column;gap:6px}
+.wordmark{font-family:var(--serif);font-size:30px;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+.wordmark .dot{color:var(--amber)}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.tag .live{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 8px var(--amber);margin-right:6px;vertical-align:1px;animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+.poly{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.poly-pill{display:inline-flex;align-items:baseline;gap:8px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--panel);font-family:var(--mono);font-size:12px;color:var(--dim);transition:border-color .15s}
+.poly-pill:hover{border-color:var(--amber)}
+.poly-pill .label{letter-spacing:.1em;text-transform:uppercase}
+.poly-pill .pct{color:var(--amber);font-weight:700;font-size:14px}
+.poly-pill .market{color:var(--ink)}
+.poly-sub{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.05em}
+
+/* ======== HERO NUMBERS ======== */
+.hero{margin:44px 0 12px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.stat{background:var(--bg);padding:24px 20px;display:flex;flex-direction:column;gap:6px}
+.stat .n{font-family:var(--mono);font-size:42px;font-weight:600;line-height:1;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums}
+.stat.deaths .n{color:var(--rust)}
+.stat .l{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-top:8px}
+.stat .sub{font-family:var(--mono);font-size:11px;color:var(--dim)}
+
+/* ======== SECTION ======== */
+section{margin-top:56px}
+h2{font-family:var(--serif);font-size:22px;font-weight:600;letter-spacing:-.01em;margin-bottom:4px}
+.kicker{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.lede{color:var(--dim);font-size:15px;max-width:64ch}
+
+/* ======== SHIP FACTS ======== */
+.ship{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:24px}
+.fact{border-left:1px solid var(--amber-dim);padding:4px 0 4px 14px}
+.fact .k{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.fact .v{font-family:var(--mono);font-size:14px;color:var(--ink);margin-top:4px}
+.fact .v.serif{font-family:var(--serif);font-size:18px}
+
+/* ======== ROUTE MAP ======== */
+.map-wrap{margin-top:28px;border:1px solid var(--line);background:#070709;padding:20px;overflow:hidden}
+.map{width:100%;height:auto;display:block}
+.map-legend{display:flex;gap:18px;margin-top:14px;font-family:var(--mono);font-size:11px;color:var(--dim);flex-wrap:wrap}
+.map-legend span{display:inline-flex;align-items:center;gap:6px}
+.dotmark{display:inline-block;width:8px;height:8px;border-radius:50%}
+
+/* ======== CASE TABLE ======== */
+table{width:100%;border-collapse:collapse;margin-top:24px;font-family:var(--mono);font-size:13px}
+th{text-align:left;font-weight:500;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);padding:10px 12px;border-bottom:1px solid var(--line);cursor:pointer;user-select:none;white-space:nowrap}
+th:hover{color:var(--amber)}
+th.sorted::after{content:" ▾";color:var(--amber)}
+th.sorted.asc::after{content:" ▴"}
+td{padding:14px 12px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink)}
+td.notes{color:var(--dim);font-family:var(--sans);font-size:13px;line-height:1.45}
+.badge{display:inline-block;padding:2px 8px;border-radius:2px;font-size:11px;letter-spacing:.06em}
+.badge.confirmed{background:rgba(212,160,23,.15);color:var(--amber);border:1px solid var(--amber-dim)}
+.badge.suspected{background:rgba(107,107,107,.15);color:var(--probe);border:1px solid var(--probe)}
+.badge.probable{background:rgba(107,107,107,.15);color:var(--probe);border:1px solid var(--probe)}
+.outcome-died{color:var(--rust);font-weight:600}
+.outcome-critical{color:var(--amber);font-weight:600}
+.pending{color:var(--dim);font-style:italic;font-family:var(--sans);font-size:13px;padding:18px 0;border-bottom:1px solid var(--line)}
+
+/* ======== COUNTRIES ======== */
+.countries{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.country{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid var(--line);background:var(--panel);font-family:var(--mono);font-size:12px}
+.country .iso{color:var(--amber);font-weight:600}
+.country .name{color:var(--dim)}
+
+/* ======== POLY GRID ======== */
+.poly-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:24px}
+.poly-row{background:var(--bg);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;border:none}
+.poly-row:hover{background:var(--panel)}
+.poly-row .m{font-family:var(--sans);font-size:14px;color:var(--ink);border:none}
+.poly-row .p{font-family:var(--mono);font-size:18px;font-weight:600;color:var(--amber);font-variant-numeric:tabular-nums}
+
+/* ======== SOURCES / FOOTER ======== */
+.sources{margin-top:20px;display:flex;flex-direction:column;gap:8px}
+.sources a{display:block;padding:8px 0;border:none;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px}
+.sources a:hover{color:#fff;border-bottom-color:var(--amber)}
+.disclaimer{margin-top:48px;padding:18px 20px;border:1px dashed var(--faint);background:transparent;color:var(--dim);font-size:13px;line-height:1.6}
+.disclaimer strong{color:var(--ink);font-weight:600}
+footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--dim);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+@media (max-width:680px){
+  body{padding:0 18px 60px}
+  .hero{grid-template-columns:repeat(2,1fr)}
+  .ship{grid-template-columns:1fr}
+  .poly-grid{grid-template-columns:1fr}
+  .stat .n{font-size:34px}
+  .wordmark{font-size:24px}
+  header{padding:20px 0 16px}
+  th,td{padding:10px 8px;font-size:12px}
+  td.notes{font-size:12px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="brand">
+    <div class="wordmark">hanta<span class="dot">2026</span></div>
+    <div class="tag"><span class="live"></span><span id="updatedTag">loading</span></div>
+  </div>
+  <div class="poly">
+    <a class="poly-pill" id="polyPill" href="https://polymarket.com/event/hantavirus-pandemic-in-2026" target="_blank" rel="noopener">
+      <span class="label">Polymarket</span>
+      <span class="market" id="polyMarket">Pandemic 2026</span>
+      <span class="pct" id="polyPct">—</span>
+    </a>
+    <span class="poly-sub">crowd odds · snapshot</span>
+  </div>
+</header>
+
+<section>
+  <div class="kicker">Outbreak — MV Hondius Andes hantavirus cluster</div>
+  <h2 id="outbreakTitle">Independent tracker · 11 cases · 3 deaths · Atlantic crossing</h2>
+  <p class="lede" id="outbreakLede">Loading situation summary…</p>
+
+  <div class="hero" id="hero">
+    <div class="stat"><div class="n" id="nCases">—</div><div class="l">Total cases</div><div class="sub" id="nCasesSub">— confirmed · — probable</div></div>
+    <div class="stat deaths"><div class="n" id="nDeaths">—</div><div class="l">Deaths</div><div class="sub" id="nCfr">— % CFR</div></div>
+    <div class="stat"><div class="n" id="nCountries">—</div><div class="l">Countries (residence)</div><div class="sub">aboard from 23 nationalities</div></div>
+    <div class="stat"><div class="n" id="nAboard">—</div><div class="l">Passengers + crew</div><div class="sub" id="nAboardSub">— passengers · — crew</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="kicker">The ship</div>
+  <h2>MV Hondius — Antarctic cruise, Atlantic transit</h2>
+  <div class="ship">
+    <div class="fact"><div class="k">Vessel</div><div class="v serif" id="fVessel">—</div></div>
+    <div class="fact"><div class="k">Operator · flag</div><div class="v" id="fOp">—</div></div>
+    <div class="fact"><div class="k">Departed</div><div class="v" id="fDep">—</div></div>
+    <div class="fact"><div class="k">Arrived</div><div class="v" id="fArr">—</div></div>
+  </div>
+
+  <div class="map-wrap">
+    <svg class="map" viewBox="0 0 1000 540" preserveAspectRatio="xMidYMid meet" aria-label="MV Hondius route from Ushuaia to Tenerife with case markers">
+      <defs>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <pattern id="dots" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+          <circle cx="1" cy="1" r="0.6" fill="#1a1a1f"/>
+        </pattern>
+      </defs>
+
+      <!-- Background dot grid -->
+      <rect width="1000" height="540" fill="url(#dots)"/>
+
+      <!-- Equator + tropics (visual anchors) -->
+      <line x1="0" y1="270" x2="1000" y2="270" stroke="#1a1a1f" stroke-width="1" stroke-dasharray="2,8"/>
+
+      <!-- Stylized continent silhouettes (low-poly, minimal). Equirectangular: x = (lng+180)*1000/360, y = (90-lat)*540/180 -->
+      <!-- South America -->
+      <path d="M310,270 L330,255 L345,260 L355,290 L355,330 L340,380 L320,420 L305,455 L290,460 L283,440 L290,400 L295,360 L300,320 Z" fill="#15151a" stroke="#222227" stroke-width="0.5"/>
+      <!-- North America (truncated) -->
+      <path d="M180,160 L240,150 L290,170 L310,210 L300,240 L280,255 L255,260 L230,250 L200,235 L185,210 Z" fill="#15151a" stroke="#222227" stroke-width="0.5"/>
+      <!-- Africa -->
+      <path d="M495,250 L545,245 L575,265 L580,300 L570,340 L555,380 L535,410 L515,420 L500,400 L490,360 L485,320 L488,285 Z" fill="#15151a" stroke="#222227" stroke-width="0.5"/>
+      <!-- Europe -->
+      <path d="M490,180 L545,175 L575,180 L580,200 L560,225 L530,235 L505,225 L495,210 Z" fill="#15151a" stroke="#222227" stroke-width="0.5"/>
+      <!-- Antarctica strip -->
+      <path d="M0,510 L1000,510 L1000,540 L0,540 Z" fill="#101015" stroke="#1a1a1f" stroke-width="0.5"/>
+
+      <!-- Ship route path -->
+      <!-- Ushuaia (-68.31, -54.81) → Antarctic Peninsula (-62, -64.5) → Atlantic (-25, -40) → Cape Town (18.42, -33.92) → Praia (-23.51, 14.93) → Tenerife (-16.63, 28.29) -->
+      <path id="routePath" d="M 310,434 Q 320,470 327,463 Q 380,420 432,390 Q 490,360 551,371 Q 540,290 510,225 Q 495,200 454,184"
+            fill="none" stroke="#d4a017" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.7"/>
+
+      <!-- Route waypoints -->
+      <g font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="10" fill="#8a877f">
+        <!-- Ushuaia -->
+        <circle cx="310" cy="434" r="4" fill="#0a0a0c" stroke="#d4a017" stroke-width="1.5"/>
+        <text x="298" y="450" text-anchor="end">Ushuaia · 1 Apr</text>
+
+        <!-- Antarctic Peninsula (first cases) -->
+        <circle cx="327" cy="463" r="5" fill="#c84630" filter="url(#glow)"/>
+        <text x="335" y="478" fill="#c84630">Antarctic · 6 Apr · index case</text>
+
+        <!-- Cape Town medevac -->
+        <circle cx="551" cy="371" r="6" fill="#c84630" filter="url(#glow)"/>
+        <text x="560" y="368" fill="#e8e6e1">Cape Town · 27 Apr</text>
+        <text x="560" y="382">medevac + Johannesburg death</text>
+
+        <!-- Cabo Verde -->
+        <circle cx="463" cy="225" r="6" fill="#d4a017" filter="url(#glow)"/>
+        <text x="475" y="222" fill="#e8e6e1">Cabo Verde · 2 May</text>
+        <text x="475" y="236">death · suspected cases evaluated</text>
+
+        <!-- Tenerife arrival -->
+        <circle cx="454" cy="184" r="7" fill="#0a0a0c" stroke="#d4a017" stroke-width="2"/>
+        <text x="442" y="174" text-anchor="end">Tenerife · 10 May</text>
+        <text x="442" y="186" text-anchor="end">arrival · disembarkation</text>
+      </g>
+
+      <!-- Country residence dots (where cases live now) -->
+      <g id="countryDots"></g>
+    </svg>
+    <div class="map-legend">
+      <span><span class="dotmark" style="background:#c84630;box-shadow:0 0 6px #c84630"></span>Death event</span>
+      <span><span class="dotmark" style="background:#d4a017;box-shadow:0 0 6px #d4a017"></span>Confirmed cluster event</span>
+      <span><span class="dotmark" style="background:#0a0a0c;border:1.5px solid #d4a017"></span>Port of call</span>
+      <span><span class="dotmark" style="background:#e8e6e1"></span>Residence country</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="kicker">Case line list</div>
+  <h2>Detailed cases reported to WHO/ECDC</h2>
+  <p class="lede">Cases with patient-level detail from WHO DON599 (4 May 2026). Additional cases reported between 4 May and 12 May are summarised below — national agencies have not yet released per-patient details.</p>
+  <table id="caseTable" aria-label="Hantavirus case line list">
+    <thead>
+      <tr>
+        <th data-k="id">#</th>
+        <th data-k="onset">Onset</th>
+        <th data-k="sex">Sex</th>
+        <th data-k="status">Status</th>
+        <th data-k="outcome">Outcome</th>
+        <th data-k="location">Location</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody id="caseBody"></tbody>
+  </table>
+  <div class="pending" id="pendingNote">—</div>
+</section>
+
+<section>
+  <div class="kicker">Geographic spread</div>
+  <h2>Residence country of confirmed and probable cases</h2>
+  <p class="lede">Cases have returned to or been repatriated to seven countries. Andes virus has the only documented person-to-person transmission of any hantavirus, but transmission typically requires close, prolonged contact.</p>
+  <div class="countries" id="countries"></div>
+</section>
+
+<section>
+  <div class="kicker">Polymarket — pandemic odds</div>
+  <h2>Crowd-priced probability of a hantavirus pandemic in 2026</h2>
+  <p class="lede">Snapshot of major Polymarket hantavirus markets. Click through for live odds. These are betting-market probabilities, not epidemiological forecasts.</p>
+  <div class="poly-grid" id="polyGrid"></div>
+</section>
+
+<section>
+  <div class="kicker">Sources</div>
+  <h2>Primary sources</h2>
+  <p class="lede">When sources conflict, prefer WHO and ECDC official assessments. This tracker is unofficial.</p>
+  <div class="sources" id="sources"></div>
+</section>
+
+<div class="disclaimer">
+  <strong>Unofficial tracker.</strong> hanta2026.org is an independent, source-linked visualization of publicly reported case data for the MV Hondius Andes hantavirus cluster. It is not a medical, public-health, or financial source. For travel guidance, defer to your national health agency. For pandemic probability, defer to WHO and ECDC. Polymarket probabilities are crowd-sourced betting markets, not epidemiological forecasts. No data is collected from visitors to this site.
+</div>
+
+<footer>
+  <span>hanta2026.org · independent tracker · open source</span>
+  <span id="footerStamp">—</span>
+</footer>
+
+</div>
+
+<script>
+(async function(){
+  const $ = s => document.querySelector(s);
+  const $$ = s => document.querySelectorAll(s);
+  const fmtDate = iso => {
+    if(!iso) return '—';
+    const d = new Date(iso);
+    return d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+  };
+  const fmtDateShort = iso => {
+    if(!iso) return '—';
+    const d = new Date(iso);
+    return d.toLocaleDateString('en-GB',{day:'numeric',month:'short'});
+  };
+
+  let data;
+  try{
+    const res = await fetch('data.json', {cache:'no-cache'});
+    data = await res.json();
+  } catch(e){
+    document.body.innerHTML = '<div style="padding:60px 24px;font-family:system-ui;color:#e8e6e1;background:#0a0a0c;min-height:100vh"><h1 style="font-family:Georgia,serif">hanta2026</h1><p>Could not load data.json. If you opened this file directly via file://, your browser may be blocking fetch. Try serving it: <code>python3 -m http.server</code> in the project folder.</p></div>';
+    return;
+  }
+
+  // Header timestamp
+  $('#updatedTag').textContent = 'updated ' + fmtDate(data.last_updated);
+  $('#footerStamp').textContent = 'data as of ' + fmtDate(data.last_updated);
+
+  // Polymarket pill
+  const p = data.polymarket.primary;
+  $('#polyPill').href = p.url;
+  $('#polyMarket').textContent = p.market.replace('?','');
+  $('#polyPct').textContent = Math.round(p.yes_probability * 100) + '%';
+
+  // Outbreak title + lede
+  const t = data.totals, o = data.outbreak;
+  $('#outbreakTitle').textContent = `Independent tracker · ${t.total_cases} cases · ${t.deaths} deaths · Atlantic crossing`;
+  $('#outbreakLede').textContent =
+    `The Dutch-flagged ${o.ship}, operated by ${o.operator}, departed ${o.departure_port} on ${fmtDate(o.departure_date)} for an Antarctic itinerary. ` +
+    `The first symptomatic passenger fell ill on 6 April. The ship arrived in ${o.arrival_port} on ${fmtDate(o.arrival_date)}; ` +
+    `disembarkation of all ${o.passengers_crew} passengers and crew completed ${fmtDate(o.disembarkation_completed)}. ` +
+    `Andes orthohantavirus is the only hantavirus with documented person-to-person transmission.`;
+
+  // Hero stats
+  $('#nCases').textContent = t.total_cases;
+  $('#nCasesSub').textContent = `${t.confirmed} confirmed · ${t.probable} probable`;
+  $('#nDeaths').textContent = t.deaths;
+  $('#nCfr').textContent = t.cfr_percent.toFixed(1) + '% CFR';
+  $('#nCountries').textContent = t.countries_affected;
+  $('#nAboard').textContent = o.passengers_crew;
+  $('#nAboardSub').textContent = `${o.passengers} passengers · ${o.crew} crew`;
+
+  // Ship facts
+  $('#fVessel').textContent = `${o.ship} · Andes orthohantavirus`;
+  $('#fOp').textContent = `${o.operator} · ${o.flag}-flagged`;
+  $('#fDep').textContent = `${o.departure_port} · ${fmtDate(o.departure_date)}`;
+  $('#fArr').textContent = `${o.arrival_port} · ${fmtDate(o.arrival_date)}`;
+
+  // Country dots on map (equirectangular projection)
+  const proj = (lng, lat) => ({
+    x: (lng + 180) * 1000 / 360,
+    y: (90 - lat) * 540 / 180
+  });
+  const dotsG = $('#countryDots');
+  data.countries.forEach(c => {
+    if(!c.affected) return;
+    const {x,y} = proj(c.lng, c.lat);
+    const ns = 'http://www.w3.org/2000/svg';
+    const circle = document.createElementNS(ns, 'circle');
+    circle.setAttribute('cx', x);
+    circle.setAttribute('cy', y);
+    circle.setAttribute('r', 3);
+    circle.setAttribute('fill', '#e8e6e1');
+    dotsG.appendChild(circle);
+    const text = document.createElementNS(ns, 'text');
+    text.setAttribute('x', x + 6);
+    text.setAttribute('y', y + 3);
+    text.setAttribute('font-family', 'ui-monospace,SFMono-Regular,Menlo,monospace');
+    text.setAttribute('font-size', '9');
+    text.setAttribute('fill', '#8a877f');
+    text.textContent = c.iso;
+    dotsG.appendChild(text);
+  });
+
+  // Case table
+  let cases = [...data.cases];
+  let sortKey = 'onset', sortAsc = true;
+  const statusBadge = s => `<span class="badge ${s}">${s}</span>`;
+  const outcomeCell = c => {
+    if(c.outcome === 'died') return `<span class="outcome-died">Died ${fmtDateShort(c.outcome_date)}</span>`;
+    if(c.outcome === 'critical') return `<span class="outcome-critical">Critical · ICU</span>`;
+    return c.outcome || '—';
+  };
+  const renderTable = () => {
+    cases.sort((a,b) => {
+      const va = a[sortKey], vb = b[sortKey];
+      if(va == null) return 1;
+      if(vb == null) return -1;
+      const cmp = (va > vb) - (va < vb);
+      return sortAsc ? cmp : -cmp;
+    });
+    $('#caseBody').innerHTML = cases.map(c => `
+      <tr>
+        <td>${c.id}</td>
+        <td>${fmtDateShort(c.onset)}</td>
+        <td>${c.sex}</td>
+        <td>${statusBadge(c.status)}</td>
+        <td>${outcomeCell(c)}</td>
+        <td>${c.location}</td>
+        <td class="notes">${c.notes}</td>
+      </tr>
+    `).join('');
+    $$('#caseTable th').forEach(th => {
+      th.classList.toggle('sorted', th.dataset.k === sortKey);
+      th.classList.toggle('asc', th.dataset.k === sortKey && sortAsc);
+    });
+  };
+  renderTable();
+  $$('#caseTable th[data-k]').forEach(th => {
+    th.addEventListener('click', () => {
+      const k = th.dataset.k;
+      if(sortKey === k) sortAsc = !sortAsc; else {sortKey = k; sortAsc = true;}
+      renderTable();
+    });
+  });
+  $('#pendingNote').textContent = '+ ' + data.additional_cases_note;
+
+  // Countries chips
+  $('#countries').innerHTML = data.countries
+    .filter(c => c.affected)
+    .map(c => `<span class="country"><span class="iso">${c.iso}</span><span class="name">${c.name}</span></span>`)
+    .join('');
+
+  // Polymarket grid
+  const allMarkets = [data.polymarket.primary, ...data.polymarket.secondary];
+  $('#polyGrid').innerHTML = allMarkets.map(m => `
+    <a class="poly-row" href="${m.url}" target="_blank" rel="noopener">
+      <span class="m">${m.market}</span>
+      <span class="p">${Math.round(m.yes_probability * 100)}%</span>
+    </a>
+  `).join('');
+
+  // Sources
+  $('#sources').innerHTML = data.sources.map(s =>
+    `<a href="${s.url}" target="_blank" rel="noopener">→ ${s.name}</a>`
+  ).join('');
+})();
+</script>
+</body>
+</html>
