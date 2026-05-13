@@ -6,6 +6,11 @@
 <title>HANTA2026 — MV Hondius Andes Hantavirus Tracker</title>
 <meta name="description" content="Independent tracker of the 2026 MV Hondius Andes hantavirus cluster. Cases, deaths, ship route, and Polymarket odds. Sources: WHO, ECDC, CDC.">
 <meta name="theme-color" content="#0a0a0c">
+<meta property="og:title" content="HANTA2026 — MV Hondius Andes Hantavirus Tracker">
+<meta property="og:description" content="Independent, source-linked tracker. 11 cases, 3 deaths, 7 countries. Ship route, case line list, and Polymarket pandemic odds.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hanta2026.org">
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%230a0a0c'/><circle cx='8' cy='8' r='4' fill='%23d4a017'/></svg>">
 <style>
 :root{
@@ -56,6 +61,11 @@ header{padding:28px 0 20px;border-bottom:1px solid var(--line);display:flex;alig
 .stat.deaths .n{color:var(--rust)}
 .stat .l{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-top:8px}
 .stat .sub{font-family:var(--mono);font-size:11px;color:var(--dim)}
+
+/* Callout */
+.callout{margin-top:18px;padding:16px 20px;background:linear-gradient(90deg,rgba(212,160,23,.08),transparent 60%);border-left:3px solid var(--amber);font-size:14px;color:var(--ink);line-height:1.55}
+.callout strong{color:var(--amber);font-weight:600}
+.callout-tag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin-right:10px}
 
 /* ======== SECTION ======== */
 section{margin-top:56px}
@@ -156,6 +166,8 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
     <div class="stat"><div class="n" id="nCountries">—</div><div class="l">Countries (residence)</div><div class="sub">aboard from 23 nationalities</div></div>
     <div class="stat"><div class="n" id="nAboard">—</div><div class="l">Passengers + crew</div><div class="sub" id="nAboardSub">— passengers · — crew</div></div>
   </div>
+
+  <div class="callout"><span class="callout-tag">Why this is being watched</span> Andes orthohantavirus is the <strong>only hantavirus with documented person-to-person transmission</strong>, though spread typically requires close, prolonged contact. WHO and ECDC continue to assess the wider-population risk as <strong>extremely low</strong>.</div>
 </section>
 
 <section>
@@ -180,53 +192,52 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
         </pattern>
       </defs>
 
-      <!-- Background dot grid -->
+      <!-- Background dot grid (purely schematic — equirectangular projection) -->
       <rect width="1000" height="540" fill="url(#dots)"/>
 
-      <!-- Equator + tropics (visual anchors) -->
+      <!-- Equator + meridian (visual anchors) -->
       <line x1="0" y1="270" x2="1000" y2="270" stroke="#1a1a1f" stroke-width="1" stroke-dasharray="2,8"/>
+      <line x1="500" y1="0" x2="500" y2="540" stroke="#1a1a1f" stroke-width="1" stroke-dasharray="2,8"/>
+      <text x="14" y="266" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="9" fill="#3a3a40" letter-spacing="0.2em">EQUATOR</text>
+      <text x="504" y="14" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="9" fill="#3a3a40" letter-spacing="0.2em">0°</text>
 
-      <!-- Stylized continent silhouettes (low-poly, minimal). Equirectangular: x = (lng+180)*1000/360, y = (90-lat)*540/180 -->
-      <!-- South America -->
-      <path d="M310,270 L330,255 L345,260 L355,290 L355,330 L340,380 L320,420 L305,455 L290,460 L283,440 L290,400 L295,360 L300,320 Z" fill="#15151a" stroke="#222227" stroke-width="0.5"/>
-      <!-- North America (truncated) -->
-      <path d="M180,160 L240,150 L290,170 L310,210 L300,240 L280,255 L255,260 L230,250 L200,235 L185,210 Z" fill="#15151a" stroke="#222227" stroke-width="0.5"/>
-      <!-- Africa -->
-      <path d="M495,250 L545,245 L575,265 L580,300 L570,340 L555,380 L535,410 L515,420 L500,400 L490,360 L485,320 L488,285 Z" fill="#15151a" stroke="#222227" stroke-width="0.5"/>
-      <!-- Europe -->
-      <path d="M490,180 L545,175 L575,180 L580,200 L560,225 L530,235 L505,225 L495,210 Z" fill="#15151a" stroke="#222227" stroke-width="0.5"/>
-      <!-- Antarctica strip -->
-      <path d="M0,510 L1000,510 L1000,540 L0,540 Z" fill="#101015" stroke="#1a1a1f" stroke-width="0.5"/>
+      <!-- Continental labels (correctly placed by lat/lng) -->
+      <g font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="10" fill="#2e2e34" letter-spacing="0.22em">
+        <text x="160" y="200">NORTH AMERICA</text>
+        <text x="295" y="380">SOUTH AMERICA</text>
+        <text x="545" y="320">AFRICA</text>
+        <text x="510" y="120">EUROPE</text>
+        <text x="430" y="525" fill="#26262a">ANTARCTICA</text>
+      </g>
 
-      <!-- Ship route path -->
-      <!-- Ushuaia (-68.31, -54.81) → Antarctic Peninsula (-62, -64.5) → Atlantic (-25, -40) → Cape Town (18.42, -33.92) → Praia (-23.51, 14.93) → Tenerife (-16.63, 28.29) -->
-      <path id="routePath" d="M 310,434 Q 320,470 327,463 Q 380,420 432,390 Q 490,360 551,371 Q 540,290 510,225 Q 495,200 454,184"
-            fill="none" stroke="#d4a017" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.7"/>
+      <!-- Ship route: Ushuaia → Antarctic Peninsula → mid-Atlantic → Cape Town → Cabo Verde → Tenerife -->
+      <path id="routePath" d="M 310,434 Q 318,470 327,463 Q 380,440 432,390 Q 500,400 551,371 Q 495,300 434,225 Q 440,200 454,184"
+            fill="none" stroke="#d4a017" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.75"/>
 
-      <!-- Route waypoints -->
+      <!-- Route waypoints (coords from equirectangular projection of real lat/lng) -->
       <g font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="10" fill="#8a877f">
-        <!-- Ushuaia -->
+        <!-- Ushuaia (-68.31, -54.81) -->
         <circle cx="310" cy="434" r="4" fill="#0a0a0c" stroke="#d4a017" stroke-width="1.5"/>
         <text x="298" y="450" text-anchor="end">Ushuaia · 1 Apr</text>
 
-        <!-- Antarctic Peninsula (first cases) -->
+        <!-- Antarctic Peninsula (-62, -64.5) — first cases -->
         <circle cx="327" cy="463" r="5" fill="#c84630" filter="url(#glow)"/>
-        <text x="335" y="478" fill="#c84630">Antarctic · 6 Apr · index case</text>
+        <text x="338" y="476" fill="#c84630">Antarctic · 6 Apr · index case</text>
 
-        <!-- Cape Town medevac -->
+        <!-- Cape Town (18.42, -33.92) — medevac -->
         <circle cx="551" cy="371" r="6" fill="#c84630" filter="url(#glow)"/>
         <text x="560" y="368" fill="#e8e6e1">Cape Town · 27 Apr</text>
-        <text x="560" y="382">medevac + Johannesburg death</text>
+        <text x="560" y="382">medevac · Johannesburg death</text>
 
-        <!-- Cabo Verde -->
-        <circle cx="463" cy="225" r="6" fill="#d4a017" filter="url(#glow)"/>
-        <text x="475" y="222" fill="#e8e6e1">Cabo Verde · 2 May</text>
-        <text x="475" y="236">death · suspected cases evaluated</text>
+        <!-- Praia / Cabo Verde (-23.51, 14.93) -->
+        <circle cx="434" cy="225" r="6" fill="#d4a017" filter="url(#glow)"/>
+        <text x="422" y="222" text-anchor="end" fill="#e8e6e1">Cabo Verde · 2 May</text>
+        <text x="422" y="236" text-anchor="end">death · suspected evaluated</text>
 
-        <!-- Tenerife arrival -->
+        <!-- Tenerife (-16.63, 28.29) — arrival -->
         <circle cx="454" cy="184" r="7" fill="#0a0a0c" stroke="#d4a017" stroke-width="2"/>
-        <text x="442" y="174" text-anchor="end">Tenerife · 10 May</text>
-        <text x="442" y="186" text-anchor="end">arrival · disembarkation</text>
+        <text x="465" y="180" fill="#e8e6e1">Tenerife · 10 May</text>
+        <text x="465" y="194">arrival · disembarkation</text>
       </g>
 
       <!-- Country residence dots (where cases live now) -->
