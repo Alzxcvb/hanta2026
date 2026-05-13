@@ -21,7 +21,7 @@ A single static HTML file that loads a small JSON dataset and renders:
 - Data lives in `data.json`, fetched at load.
 - Page weight ~28 KB; first paint sub-100 ms on a fast connection.
 - Dark theme, serif headers, monospace numbers, amber accent. Designed to look unlike the generic AI-generated COVID-tracker template.
-- No analytics, no tracking, no cookies.
+- Anonymous pageview counts via Cloudflare Web Analytics (no cookies, no tracking IDs, no personal data, no third-party advertisers).
 
 ## Hosting
 
