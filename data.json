@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-12T00:00:00Z",
+  "last_updated": "2026-05-14T00:00:00Z",
   "outbreak": {
     "name": "MV Hondius Andes hantavirus cluster",
     "virus": "Andes orthohantavirus",
@@ -19,7 +19,7 @@
   },
   "totals": {
     "total_cases": 11,
-    "confirmed": 9,
+    "confirmed": 8,
     "probable": 2,
     "deaths": 3,
     "cfr_percent": 27.3,
@@ -72,10 +72,10 @@
       "sex": "M",
       "age_group": "adult",
       "status": "confirmed",
-      "outcome": "critical",
+      "outcome": "recovering",
       "outcome_date": null,
-      "location": "South Africa (ICU)",
-      "notes": "Medically evacuated 27 April. PCR-confirmed 2 May."
+      "location": "South Africa (ICU → improving)",
+      "notes": "Medically evacuated 27 April. PCR-confirmed 2 May. British male, age 69. Status upgraded from critical to improving by 11 May."
     },
     {
       "id": 4,
@@ -87,15 +87,26 @@
       "outcome_date": "2026-05-02",
       "location": "Cabo Verde",
       "notes": "Presented with pneumonia."
+    },
+    {
+      "id": 9,
+      "onset": "2026-05-11",
+      "sex": "F",
+      "age_group": "adult",
+      "status": "confirmed",
+      "outcome": "critical",
+      "outcome_date": null,
+      "location": "France (ICU, life support)",
+      "notes": "Developed symptoms during repatriation flight. PCR-confirmed 11 May. On life support as of 13 May; French health authorities describe as 'final stage of supportive care'."
     }
   ],
-  "additional_cases_note": "7 additional cases (5 confirmed, 2 probable) reported between 4 May and 12 May 2026. Patient-level details not yet released by national health agencies.",
+  "additional_cases_note": "6 additional cases (4 confirmed, 2 probable) reported between 4–11 May 2026; full patient-level details pending. One previously-confirmed American case reclassified to inconclusive (second test negative; third test pending). No new cases or deaths since 12 May (ECDC, 13 May 2026).",
   "polymarket": {
     "primary": {
       "market": "Hantavirus pandemic in 2026?",
-      "yes_probability": 0.09,
+      "yes_probability": 0.08,
       "url": "https://polymarket.com/event/hantavirus-pandemic-in-2026",
-      "snapshot_at": "2026-05-12"
+      "snapshot_at": "2026-05-14"
     },
     "secondary": [
       {"market": "New pandemic in 2026?", "yes_probability": 0.115, "url": "https://polymarket.com/event/new-pandemic-in-2026"},
@@ -109,6 +120,7 @@
     {"name": "ECDC — Andes hantavirus outbreak", "url": "https://www.ecdc.europa.eu/en/infectious-disease-topics/hantavirus-infection/surveillance-and-updates/andes-hantavirus-outbreak"},
     {"name": "CDC Health Alert (HAN00528)", "url": "https://www.cdc.gov/han/php/notices/han00528.html"},
     {"name": "CDC — Andes virus situation summary", "url": "https://www.cdc.gov/hantavirus/situation-summary/index.html"},
+    {"name": "WHO Disease Outbreak News (DON600)", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON600"},
     {"name": "MV Hondius hantavirus outbreak (Wikipedia)", "url": "https://en.wikipedia.org/wiki/MV_Hondius_hantavirus_outbreak"}
   ]
 }
