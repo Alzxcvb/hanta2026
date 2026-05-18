@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-16T00:00:00Z",
+  "last_updated": "2026-05-18T00:00:00Z",
   "outbreak": {
     "name": "MV Hondius Andes hantavirus cluster",
     "virus": "Andes orthohantavirus",
@@ -12,18 +12,23 @@
     "arrival_port": "Tenerife, Canary Islands",
     "arrival_date": "2026-05-10",
     "disembarkation_completed": "2026-05-11",
+    "final_port": "Rotterdam, Netherlands",
+    "final_port_eta": "2026-05-18",
     "passengers_crew": 147,
     "passengers": 88,
     "crew": 59,
     "nationalities_aboard": 23
   },
   "totals": {
-    "total_cases": 11,
-    "confirmed": 8,
+    "total_cases": 12,
+    "confirmed": 9,
     "probable": 2,
+    "inconclusive": 1,
     "deaths": 3,
-    "cfr_percent": 27.3,
-    "countries_affected": 7
+    "deaths_confirmed_andes": 2,
+    "deaths_probable_andes": 1,
+    "cfr_percent": 25.0,
+    "countries_affected": 12
   },
   "countries": [
     {"iso": "NL", "name": "Netherlands", "lat": 52.13, "lng": 5.29, "affected": true},
@@ -32,16 +37,25 @@
     {"iso": "CH", "name": "Switzerland", "lat": 46.82, "lng": 8.23, "affected": true},
     {"iso": "FR", "name": "France", "lat": 46.23, "lng": 2.21, "affected": true},
     {"iso": "US", "name": "United States", "lat": 39.83, "lng": -98.58, "affected": true},
-    {"iso": "ES", "name": "Spain", "lat": 40.46, "lng": -3.75, "affected": true}
+    {"iso": "ES", "name": "Spain", "lat": 40.46, "lng": -3.75, "affected": true},
+    {"iso": "ZA", "name": "South Africa", "lat": -30.56, "lng": 22.94, "affected": true},
+    {"iso": "SH", "name": "Saint Helena", "lat": -15.97, "lng": -5.71, "affected": true},
+    {"iso": "SG", "name": "Singapore", "lat": 1.35, "lng": 103.82, "affected": true},
+    {"iso": "AU", "name": "Australia", "lat": -25.27, "lng": 133.78, "affected": true},
+    {"iso": "CA", "name": "Canada", "lat": 56.13, "lng": -106.35, "affected": true},
+    {"iso": "TR", "name": "Turkey", "lat": 38.96, "lng": 35.24, "affected": true}
   ],
   "route": [
     {"port": "Ushuaia", "country": "Argentina", "lat": -54.81, "lng": -68.31, "date": "2026-04-01", "event": "departure"},
-    {"port": "Antarctic Peninsula", "country": "Antarctica", "lat": -64.5, "lng": -62.0, "date": "2026-04-06", "event": "first symptoms aboard"},
-    {"port": "At sea", "country": "South Atlantic", "lat": -40.0, "lng": -25.0, "date": "2026-04-24", "event": "additional cases"},
-    {"port": "Cape Town", "country": "South Africa", "lat": -33.92, "lng": 18.42, "date": "2026-04-27", "event": "medevac"},
+    {"port": "Antarctic Peninsula", "country": "Antarctica", "lat": -64.5, "lng": -62.0, "date": "2026-04-06", "event": "first symptoms aboard (index case)"},
+    {"port": "South Georgia", "country": "UK Overseas Territory", "lat": -54.43, "lng": -36.59, "date": "2026-04-07", "event": "scheduled landing"},
+    {"port": "Tristan da Cunha", "country": "UK Overseas Territory", "lat": -37.11, "lng": -12.29, "date": "2026-04-14", "event": "scheduled landing"},
+    {"port": "Saint Helena", "country": "UK Overseas Territory", "lat": -15.97, "lng": -5.71, "date": "2026-04-24", "event": "29–40 passengers disembarked (operator vs. Dutch MFA discrepancy); index-case remains + widow offloaded"},
+    {"port": "Ascension Island", "country": "UK Overseas Territory", "lat": -7.95, "lng": -14.36, "date": "2026-04-27", "event": "scheduled stop"},
     {"port": "Praia", "country": "Cabo Verde", "lat": 14.93, "lng": -23.51, "date": "2026-05-02", "event": "death + evaluation of suspected cases"},
-    {"port": "Tenerife", "country": "Canary Islands", "lat": 28.29, "lng": -16.63, "date": "2026-05-10", "event": "arrival"},
-    {"port": "Tenerife", "country": "Canary Islands", "lat": 28.29, "lng": -16.63, "date": "2026-05-11", "event": "disembarkation complete"}
+    {"port": "Tenerife", "country": "Canary Islands (Spain)", "lat": 28.29, "lng": -16.63, "date": "2026-05-10", "event": "arrival"},
+    {"port": "Tenerife", "country": "Canary Islands (Spain)", "lat": 28.29, "lng": -16.63, "date": "2026-05-11", "event": "disembarkation of all passengers complete"},
+    {"port": "Rotterdam", "country": "Netherlands", "lat": 51.92, "lng": 4.48, "date": "2026-05-18", "event": "expected arrival (final port; 25 crew + 2 health workers + 1 set of remains aboard; 23 quarantine cabins prepared dockside)"}
   ],
   "cases": [
     {
@@ -53,7 +67,7 @@
       "outcome": "died",
       "outcome_date": "2026-04-11",
       "location": "aboard ship",
-      "notes": "Index case. No laboratory confirmation performed."
+      "notes": "Index case. Dutch national. Died aboard near Antarctic Peninsula; body preserved on board and offloaded at St. Helena on 24 Apr. No laboratory confirmation performed."
     },
     {
       "id": 2,
@@ -64,7 +78,7 @@
       "outcome": "died",
       "outcome_date": "2026-04-26",
       "location": "Johannesburg, South Africa",
-      "notes": "Close contact of Case 1. PCR-confirmed 4 May."
+      "notes": "Widow of Case 1. Disembarked at St. Helena 24 Apr, removed from KLM flight KL592 (JNB→AMS) on 25 Apr due to illness; died in South African hospital. PCR-confirmed 4 May."
     },
     {
       "id": 3,
@@ -75,7 +89,7 @@
       "outcome": "recovering",
       "outcome_date": null,
       "location": "South Africa (ICU → improving)",
-      "notes": "Medically evacuated 27 April. PCR-confirmed 2 May. British male, age 69. Status upgraded from critical to improving by 11 May."
+      "notes": "British male, age 69. Medically evacuated 27 April to South Africa. PCR-confirmed 2 May. Status upgraded from critical to improving by 11 May."
     },
     {
       "id": 4,
@@ -86,7 +100,7 @@
       "outcome": "died",
       "outcome_date": "2026-05-02",
       "location": "Cabo Verde",
-      "notes": "Presented with pneumonia."
+      "notes": "Presented with pneumonia. Most recent death in the cluster."
     },
     {
       "id": 9,
@@ -97,16 +111,64 @@
       "outcome": "critical",
       "outcome_date": null,
       "location": "France (ICU, life support)",
-      "notes": "Developed symptoms during repatriation flight. PCR-confirmed 11 May. On life support as of 15 May; French health authorities describe as 'final stage of supportive care'."
+      "notes": "Developed symptoms during repatriation flight. PCR-confirmed 11 May. On life support as of 15 May; French health authorities describe as 'final stage of supportive care'. No update reported as of 17 May."
     }
   ],
-  "additional_cases_note": "6 additional cases (4 confirmed, 2 probable) reported between 4–11 May 2026; full patient-level details pending. One previously-confirmed American case reclassified to inconclusive (second test negative; third test pending). No new cases or deaths since 12 May (ECDC, 15 May 2026). Genetic sequencing confirms a single zoonotic spillover event (≤1 SNP difference across all sequences); index case likely acquired infection through rodent exposure during birdwatching in South America prior to boarding. MV Hondius en route to Rotterdam for decontamination (expected arrival 17–18 May 2026).",
+  "additional_cases_note": "7 additional cases (4 confirmed, 2 probable, 1 inconclusive) reported between 4–17 May 2026; full patient-level details pending. One previously-confirmed American case has been reclassified to inconclusive — third test as of 15 May was negative with no antibodies detected, meaning he was likely never infected. No new cases or deaths reported since 12 May (ECDC, 17 May 2026). Genetic sequencing confirms a single zoonotic spillover event (≤1 SNP difference across all sequences); WHO working hypothesis is that the index case acquired infection through rodent exposure on land in South America before boarding, with subsequent human-to-human transmission on board. MV Hondius expected to arrive Rotterdam 18 May 2026 with 25 crew, 2 health workers, and the index case's remains — no symptomatic individuals aboard.",
+  "incubation_period": {
+    "who_typical": "1–6 weeks (per WHO DON601, 13 May 2026)",
+    "who_range": "1–8 weeks (potential range cited by WHO)",
+    "cdc_range": "4–42 days (long-standing CDC range)",
+    "note": "The 4–42 day range has been the CDC's documented incubation period for Andes virus since the 1990s. WHO's most recent guidance gives a typical range of 1–6 weeks (i.e. 7–42 days), with a potential range of 1–8 weeks."
+  },
+  "contacts_traced": {
+    "summary": "Several hundred contacts on at least four continents are being monitored. There is no published global aggregate; reports of much larger figures (e.g. 1,400–1,800) are not supported by WHO, ECDC, or CDC.",
+    "st_helena_disembarked": "29 (per Oceanwide Expeditions) or ~40 (per Dutch Foreign Ministry) — number remains disputed",
+    "st_helena_high_risk": "small number of higher-risk contacts isolating for 45 days",
+    "united_states": "41 individuals being monitored; 18 in active quarantine (incl. UNMC biocontainment unit)",
+    "united_kingdom": "2 passengers self-isolating plus a small number of secondary contacts",
+    "singapore": "2 individuals isolated and testing",
+    "south_africa": "contacts from KLM flight KL592 (88 people aboard) being traced",
+    "limitations": "Some passengers who disembarked at St. Helena returned home before contact tracing was established. WHO acknowledges tracing is incomplete; wider-population risk is nevertheless assessed as 'extremely low' given that Andes virus typically requires close, prolonged contact for human-to-human transmission."
+  },
+  "clarifications": [
+    {
+      "claim": "WHO quietly changed the incubation period to 'as early as 4 days'",
+      "verdict": "Misleading",
+      "detail": "The 4-day lower bound (range 4–42 days) is the long-standing CDC figure, in place since the 1990s. WHO's most recent guidance (DON601, 13 May 2026) actually gives a typical incubation of 1–6 weeks with a potential range of 1–8 weeks — minimum 1 week, not 4 days. No 'quiet change' occurred.",
+      "sources": ["CDC Andes Virus factsheet", "WHO DON601"]
+    },
+    {
+      "claim": "1,400 to 1,800 people are unknowingly exposed and walking around",
+      "verdict": "Unsupported",
+      "detail": "No WHO, ECDC, or CDC document publishes such a figure. Disclosed monitoring totals are in the hundreds across all countries combined (e.g. 41 in the US, ~88 on the JNB→AMS flight being traced, plus smaller groups in the UK, Singapore, St. Helena). The ship itself carried 147 people. The 1,400–1,800 number appears to be a social-media estimate, not an official one.",
+      "sources": ["WHO DON601", "ECDC update 17 May 2026"]
+    },
+    {
+      "claim": "Authorities can't confirm if 24 or 40 passengers got off the ship at St. Helena",
+      "verdict": "Partly true (29 vs ~40)",
+      "detail": "Oceanwide Expeditions reports 29 passengers disembarked at St. Helena on 24 April. The Dutch Foreign Ministry cites approximately 40. The 24 figure is not in any source we found. The 29-vs-40 discrepancy is real and reflects incomplete manifest reconciliation, but neither end of the range is 24.",
+      "sources": ["NPR 7 May 2026", "PBS NewsHour"]
+    },
+    {
+      "claim": "A new, invisible chain of community transmission is about to start",
+      "verdict": "Speculative",
+      "detail": "Andes virus is the only hantavirus with documented human-to-human transmission, but transmission typically requires close, prolonged contact (household, intensive caregiving). WHO and ECDC both assess wider-population risk as 'extremely low'. Contact tracing is incomplete but ongoing; no community transmission outside identified contacts has been reported as of 17 May 2026.",
+      "sources": ["WHO statement 7 May 2026", "ECDC 17 May 2026"]
+    },
+    {
+      "claim": "FIFA games / mass events will accelerate spread",
+      "verdict": "No evidence",
+      "detail": "Andes virus is not influenza or SARS-CoV-2; it does not spread efficiently in casual crowd settings. Documented person-to-person transmission has only occurred among close household and healthcare contacts of symptomatic patients. There is no public-health basis for linking FIFA or similar mass gatherings to outbreak amplification.",
+      "sources": ["CDC Andes virus factsheet", "Harvard Health"]
+    }
+  ],
   "polymarket": {
     "primary": {
       "market": "Hantavirus pandemic in 2026?",
       "yes_probability": 0.07,
       "url": "https://polymarket.com/event/hantavirus-pandemic-in-2026",
-      "snapshot_at": "2026-05-16"
+      "snapshot_at": "2026-05-18"
     },
     "secondary": [
       {"market": "New pandemic in 2026?", "yes_probability": 0.11, "url": "https://polymarket.com/event/new-pandemic-in-2026"},
@@ -116,12 +178,16 @@
     "index_url": "https://polymarket.com/predictions/hantavirus"
   },
   "sources": [
+    {"name": "WHO Disease Outbreak News (DON601, 13 May 2026)", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON601"},
+    {"name": "WHO Disease Outbreak News (DON600)", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON600"},
     {"name": "WHO Disease Outbreak News (DON599)", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON599"},
-    {"name": "ECDC — Andes hantavirus outbreak", "url": "https://www.ecdc.europa.eu/en/infectious-disease-topics/hantavirus-infection/surveillance-and-updates/andes-hantavirus-outbreak"},
+    {"name": "WHO — response to hantavirus cases linked to a cruise ship (7 May 2026)", "url": "https://www.who.int/news/item/07-05-2026-who-s-response-to-hantavirus-cases-linked-to-a-cruise-ship"},
+    {"name": "ECDC — Andes hantavirus outbreak (updated 17 May 2026)", "url": "https://www.ecdc.europa.eu/en/infectious-disease-topics/hantavirus-infection/surveillance-and-updates/andes-hantavirus-outbreak"},
     {"name": "CDC Health Alert (HAN00528)", "url": "https://www.cdc.gov/han/php/notices/han00528.html"},
     {"name": "CDC — Andes virus situation summary", "url": "https://www.cdc.gov/hantavirus/situation-summary/index.html"},
-    {"name": "WHO Disease Outbreak News (DON600)", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON600"},
-    {"name": "WHO Disease Outbreak News (DON601)", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON601"},
+    {"name": "CDC — About Andes virus (incubation period)", "url": "https://www.cdc.gov/hantavirus/about/andesvirus.html"},
+    {"name": "NPR — Passengers left ship at St. Helena (7 May 2026)", "url": "https://www.npr.org/2026/05/07/nx-s1-5814632/passengers-left-ship-hantavirus-st-helena"},
+    {"name": "PBS NewsHour — Dozens left ship after first fatality", "url": "https://www.pbs.org/newshour/health/dozens-of-passengers-left-hantavirus-stricken-cruise-ship-after-1st-fatality"},
     {"name": "MV Hondius hantavirus outbreak (Wikipedia)", "url": "https://en.wikipedia.org/wiki/MV_Hondius_hantavirus_outbreak"}
   ]
 }
