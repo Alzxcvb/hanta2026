@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-21T00:00:00Z",
+  "last_updated": "2026-05-23T00:00:00Z",
   "outbreak": {
     "name": "MV Hondius Andes hantavirus cluster",
     "virus": "Andes orthohantavirus",
@@ -111,10 +111,10 @@
       "outcome": "critical",
       "outcome_date": null,
       "location": "France (ICU, life support)",
-      "notes": "Developed symptoms during repatriation flight. PCR-confirmed 11 May. On life support (ECMO/artificial lung) as of 16 May; French health authorities describe as 'final stage of supportive care'. No confirmed outcome reported as of 21 May."
+      "notes": "Developed symptoms during repatriation flight. PCR-confirmed 11 May. On life support (ECMO/artificial lung) as of 16 May; French health authorities describe as 'final stage of supportive care'. Remains on ECMO at Hôpital Bichat (Paris); no further deterioration and no confirmed outcome reported as of 23 May. All 26 close contacts of the two French cases tested PCR-negative."
     }
   ],
-  "additional_cases_note": "6 additional cases (4 confirmed, 2 probable) reported between 4–17 May 2026; full patient-level details pending. The previously-inconclusive American case has been officially removed from the count — negative third PCR test with no antibodies detected, ruling out infection (ECDC, 19 May 2026). No new cases or deaths reported since 12 May (ECDC, 20 May 2026). Genetic sequencing confirms a single zoonotic spillover event (≤1 SNP difference across all sequences); WHO working hypothesis is that the index case acquired infection through rodent exposure on land in South America before boarding, with subsequent human-to-human transmission on board. MV Hondius arrived Rotterdam 18 May; 25 crew in 6-week quarantine, ship disinfection underway. Three Netherlands residents who shared aircraft with cases tested negative for Andes virus. CDC issued HAN00529 (19 May 2026) to inform clinicians of CLIA-validated Andes virus testing at CDC, Quest Diagnostics, and selected state labs; 18 US repatriated passengers in quarantine at Nebraska through 31 May, quarantine orders formally issued for 2. A hantavirus death in Douglas County, Colorado (18 May) was confirmed by state officials as unrelated to the Hondius cluster — Sin Nombre strain, local rodent exposure, no connection to Andes virus or cruise ship travel.",
+  "additional_cases_note": "6 additional cases (4 confirmed, 2 probable) reported between 4–17 May 2026; full patient-level details pending. The previously-inconclusive American case has been officially removed from the count — negative third PCR test with no antibodies detected, ruling out infection (ECDC, 19 May 2026). No new cases or deaths reported since 12 May (ECDC, as of 22 May 2026). Genetic sequencing confirms a single zoonotic spillover event (≤1 SNP difference across all sequences); WHO working hypothesis is that the index case acquired infection through rodent exposure on land in South America before boarding, with subsequent human-to-human transmission on board. MV Hondius arrived Rotterdam 18 May; 25 crew in 6-week quarantine, ship disinfection underway. Three Netherlands residents who shared aircraft with cases tested negative for Andes virus. CDC issued HAN00529 (19 May 2026) to inform clinicians of CLIA-validated Andes virus testing at CDC, Quest Diagnostics, and selected state labs; 18 US repatriated passengers in quarantine at Nebraska through 31 May, quarantine orders formally issued for 2. A hantavirus death in Douglas County, Colorado (18 May) was confirmed by state officials as unrelated to the Hondius cluster — Sin Nombre strain, local rodent exposure, no connection to Andes virus or cruise ship travel.",
   "incubation_period": {
     "who_typical": "1–6 weeks (per WHO DON601, 13 May 2026)",
     "who_range": "1–8 weeks (potential range cited by WHO)",
@@ -172,9 +172,9 @@
   "polymarket": {
     "primary": {
       "market": "Hantavirus pandemic in 2026?",
-      "yes_probability": 0.06,
+      "yes_probability": 0.05,
       "url": "https://polymarket.com/event/hantavirus-pandemic-in-2026",
-      "snapshot_at": "2026-05-21"
+      "snapshot_at": "2026-05-23"
     },
     "secondary": [
       {"market": "New pandemic in 2026?", "yes_probability": 0.11, "url": "https://polymarket.com/event/new-pandemic-in-2026"},
@@ -193,7 +193,7 @@
     {"name": "CDC — About Andes virus (incubation period)", "url": "https://www.cdc.gov/hantavirus/about/andesvirus.html"},
     {"name": "NPR — Passengers left ship at St. Helena (7 May 2026)", "url": "https://www.npr.org/2026/05/07/nx-s1-5814632/passengers-left-ship-hantavirus-st-helena"},
     {"name": "PBS NewsHour — Dozens left ship after first fatality", "url": "https://www.pbs.org/newshour/health/dozens-of-passengers-left-hantavirus-stricken-cruise-ship-after-1st-fatality"},
-    {"name": "ECDC — Andes hantavirus outbreak (updated 20 May 2026)", "url": "https://www.ecdc.europa.eu/en/infectious-disease-topics/hantavirus-infection/surveillance-and-updates/andes-hantavirus-outbreak"},
+    {"name": "ECDC — Andes hantavirus outbreak (updated 21 May 2026, case count as of 22 May)", "url": "https://www.ecdc.europa.eu/en/infectious-disease-topics/hantavirus-infection/surveillance-and-updates/andes-hantavirus-outbreak"},
     {"name": "CDC Health Alert (HAN00529, 19 May 2026) — Testing for Potential Infection", "url": "https://www.cdc.gov/han/php/notices/han00529.html"},
     {"name": "MV Hondius hantavirus outbreak (Wikipedia)", "url": "https://en.wikipedia.org/wiki/MV_Hondius_hantavirus_outbreak"}
   ]
