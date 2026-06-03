@@ -7,7 +7,7 @@
 <meta name="description" content="Independent tracker of the 2026 MV Hondius Andes hantavirus cluster. Cases, deaths, ship route, contact tracing, fact-check, and Polymarket odds. Sources: WHO, ECDC, CDC.">
 <meta name="theme-color" content="#0a0a0c">
 <meta property="og:title" content="HANTA2026 — MV Hondius Andes Hantavirus Tracker">
-<meta property="og:description" content="Independent, source-linked tracker. 12 cases, 3 deaths, 12 countries. Ship route, case line list, contact tracing, fact-check, and Polymarket pandemic odds.">
+<meta property="og:description" content="Independent, source-linked tracker. 13 cases, 3 deaths, 12 countries, Rt 0.7. Ship route, case line list, contact tracing, fact-check, and Polymarket pandemic odds.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hanta2026.org">
 <meta name="twitter:card" content="summary">
@@ -182,7 +182,7 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
 
 <section>
   <div class="kicker">Outbreak — MV Hondius Andes hantavirus cluster</div>
-  <h2 id="outbreakTitle">Independent tracker · 12 cases · 3 deaths · Atlantic crossing complete</h2>
+  <h2 id="outbreakTitle">Independent tracker · 13 cases · 3 deaths · Atlantic crossing complete</h2>
   <p class="lede" id="outbreakLede">Loading situation summary…</p>
 
   <div class="hero" id="hero">
@@ -192,7 +192,7 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
     <div class="stat"><div class="n" id="nAboard">—</div><div class="l">Passengers + crew</div><div class="sub" id="nAboardSub">— passengers · — crew</div></div>
   </div>
 
-  <div class="callout"><span class="callout-tag">Why this is being watched</span> Andes orthohantavirus is the <strong>only hantavirus with documented person-to-person transmission</strong>, though spread typically requires close, prolonged contact. WHO and ECDC continue to assess the wider-population risk as <strong>extremely low</strong>.</div>
+  <div class="callout"><span class="callout-tag">Why this is being watched</span> Andes orthohantavirus is the <strong>only hantavirus with documented person-to-person transmission</strong>, though spread typically requires close, prolonged contact. WHO estimates the outbreak's effective reproduction number (R<sub>t</sub>) at <strong>0.7</strong> as of 22 May — below the 1.0 threshold for self-sustaining spread — and WHO and ECDC continue to assess the wider-population risk as <strong>extremely low</strong>.</div>
 </section>
 
 <section>
@@ -291,7 +291,7 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
 <section>
   <div class="kicker">Case line list</div>
   <h2>Detailed cases reported to WHO/ECDC</h2>
-  <p class="lede">Cases with patient-level detail from WHO DON599 (4 May 2026). Additional cases reported between 4 May and 12 May are summarised below — national agencies have not yet released per-patient details.</p>
+  <p class="lede">Cases with patient-level detail from WHO DON599 (4 May 2026). Additional cases reported between 4 and 25 May — including a crew member in the Netherlands (22 May) and a Spanish national in Madrid (25 May) — are summarised below; national agencies have not yet released per-patient details.</p>
   <table id="caseTable" aria-label="Hantavirus case line list">
     <thead>
       <tr>
@@ -525,8 +525,10 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
   if(data.incubation_period){
     const ip = data.incubation_period;
     $('#incuV').innerHTML =
-      `<strong>WHO (DON601):</strong> ${ip.who_typical}; potential range ${ip.who_range}. ` +
+      `<strong>WHO (DON604):</strong> mean ${ip.who_mean}. ` +
+      `<strong>WHO (DON601):</strong> typical ${ip.who_typical}, potential range ${ip.who_range}. ` +
       `<strong>CDC:</strong> ${ip.cdc_range}. ` +
+      (ip.safe_release ? `${ip.safe_release} ` : '') +
       `<span style="color:var(--dim)">${ip.note}</span>`;
   }
 
