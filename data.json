@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-03T00:00:00Z",
-  "data_as_of": "2026-05-27",
+  "last_updated": "2026-06-05T00:00:00Z",
+  "data_as_of": "2026-06-04",
   "outbreak": {
     "name": "MV Hondius Andes hantavirus cluster",
     "virus": "Andes orthohantavirus",
@@ -114,10 +114,10 @@
       "outcome": "critical",
       "outcome_date": null,
       "location": "France (ICU, life support)",
-      "notes": "Developed symptoms during repatriation flight. PCR-confirmed 11 May. On life support (ECMO/artificial lung) as of 16 May; French health authorities describe as 'final stage of supportive care'. Remained on ECMO at Hôpital Bichat (Paris); no confirmed outcome reported as of 27 May. All 26 close contacts of the two French cases tested PCR-negative."
+      "notes": "Developed symptoms during repatriation flight. PCR-confirmed 11 May. On life support (ECMO/artificial lung) as of 16 May; French health authorities describe as 'final stage of supportive care'. Remained on ECMO at Hôpital Bichat (Paris); no confirmed outcome reported as of 27 May. As of early June 2026, no further deterioration reported — still critical on ECMO. All 26 close contacts of the two French cases tested PCR-negative."
     }
   ],
-  "additional_cases_note": "As of 27 May 2026 the cluster totals 13 cases — 11 confirmed and 2 probable, with 3 deaths (case fatality ratio 23%) (WHO DON604, published 28 May 2026; ECDC, case count as of 26 May 2026). The two most recent confirmed cases are a crew member who had been isolating in the Netherlands (PCR-positive 22 May, raising the total to 12) and a Spanish national already quarantining at the Gómez Ulla Military Hospital in Madrid (PCR-positive 25 May while in isolation, raising the total to 13). ECDC revised its case definition so that confirmation requires detection of Andes virus by PCR and/or serology, reclassifying the two recent cases as confirmed. No new deaths have been reported since 2 May, and no new cases since 25 May. WHO estimates the outbreak's effective reproduction number (Rt) at 0.7 as of 22 May — below the threshold for self-sustaining transmission — with a mean incubation period of 22 days and a 96% probability of safe release from quarantine at 42 days post-exposure. More than 600 contacts have now been identified across 32 countries, territories and areas (about 53% high-risk, 47% low-risk) — the first published global aggregate, and far below the 1,400–1,800 figure circulating on social media. The previously-inconclusive American case remains officially removed (negative third PCR, no antibodies detected; ECDC, 19 May 2026); the United States reports no confirmed cases, and the 18 repatriated US passengers completed 21-day monitoring at the UNMC/Nebraska biocontainment facility through 31 May (CDC had issued formal quarantine orders for 2). The MV Hondius completed disinfection at Rotterdam and, as of early June 2026, was reported cleared to return to service, with Rotterdam's municipal health service (GGD) finding no public-health obstacle; contact monitoring continues through the 45-day maximum incubation window into mid-June. A hantavirus death in Douglas County, Colorado (18 May) was confirmed by state officials as unrelated to the Hondius cluster — Sin Nombre strain, local rodent exposure, no connection to Andes virus or cruise-ship travel.",
+  "additional_cases_note": "As of 27 May 2026 the cluster totals 13 cases — 11 confirmed and 2 probable, with 3 deaths (case fatality ratio 23%) (WHO DON604, published 28 May 2026; ECDC, case count as of 26 May 2026). The two most recent confirmed cases are a crew member who had been isolating in the Netherlands (PCR-positive 22 May, raising the total to 12) and a Spanish national already quarantining at the Gómez Ulla Military Hospital in Madrid (PCR-positive 25 May while in isolation, raising the total to 13). ECDC revised its case definition so that confirmation requires detection of Andes virus by PCR and/or serology, reclassifying the two recent cases as confirmed. No new deaths have been reported since 2 May, and no new cases since 25 May. WHO estimates the outbreak's effective reproduction number (Rt) at 0.7 as of 22 May — below the threshold for self-sustaining transmission — with a mean incubation period of 22 days and a 96% probability of safe release from quarantine at 42 days post-exposure. More than 600 contacts have now been identified across 32 countries, territories and areas (about 53% high-risk, 47% low-risk) — the first published global aggregate, and far below the 1,400–1,800 figure circulating on social media. The previously-inconclusive American case remains officially removed (negative third PCR, no antibodies detected; ECDC, 19 May 2026); the United States reports no confirmed cases, and the 18 repatriated US passengers completed 21-day monitoring at the UNMC/Nebraska biocontainment facility through 31 May (CDC had issued formal quarantine orders for 2). The MV Hondius completed disinfection at Rotterdam and, as of early June 2026, was reported cleared to return to service, with Rotterdam's municipal health service (GGD) finding no public-health obstacle. A hantavirus death in Douglas County, Colorado (18 May) was confirmed by state officials as unrelated to the Hondius cluster — Sin Nombre strain, local rodent exposure, no connection to Andes virus or cruise-ship travel. June 2026 update: As of 4 June, no new cases have been reported in 11 consecutive days (last confirmed case: 25 May). The French passenger (Case 9) remains on ECMO at Hôpital Bichat-Claude-Bernard in Paris — still critical but no further deterioration reported as of early June. Contact monitoring continues through ~6 July 2026 (42 days from the 25 May last-known exposure date). The first peer-reviewed case series was published in the New England Journal of Medicine (Andes Hantavirus Outbreak on a Cruise Ship, 2026; NEJMc2606496).",
   "incubation_period": {
     "who_mean": "22 days (WHO DON604, 28 May 2026)",
     "who_typical": "1–6 weeks (per WHO DON601, 13 May 2026)",
@@ -179,10 +179,10 @@
       "market": "Hantavirus pandemic in 2026?",
       "yes_probability": 0.06,
       "url": "https://polymarket.com/event/hantavirus-pandemic-in-2026",
-      "snapshot_at": "2026-06-03"
+      "snapshot_at": "2026-06-05"
     },
     "secondary": [
-      {"market": "Hantavirus outbreak by June 30?", "yes_probability": 0.03, "url": "https://polymarket.com/event/hantavirus-outbreak-by-june-30"},
+      {"market": "Hantavirus outbreak by June 30?", "yes_probability": 0.02, "url": "https://polymarket.com/event/hantavirus-outbreak-by-june-30"},
       {"market": "Hantavirus vaccine in 2026?", "yes_probability": 0.07, "url": "https://polymarket.com/event/hantavirus-vaccine-in-2026"},
       {"market": "Hantavirus lab leak confirmed by June 30?", "yes_probability": 0.01, "url": "https://polymarket.com/event/hantavirus-lab-leak-confirmed-by-june-30-1"}
     ],
@@ -202,6 +202,7 @@
     {"name": "CDC — About Andes virus (incubation period)", "url": "https://www.cdc.gov/hantavirus/about/andesvirus.html"},
     {"name": "NPR — Passengers left ship at St. Helena (7 May 2026)", "url": "https://www.npr.org/2026/05/07/nx-s1-5814632/passengers-left-ship-hantavirus-st-helena"},
     {"name": "PBS NewsHour — Dozens left ship after first fatality", "url": "https://www.pbs.org/newshour/health/dozens-of-passengers-left-hantavirus-stricken-cruise-ship-after-1st-fatality"},
-    {"name": "MV Hondius hantavirus outbreak (Wikipedia)", "url": "https://en.wikipedia.org/wiki/MV_Hondius_hantavirus_outbreak"}
+    {"name": "MV Hondius hantavirus outbreak (Wikipedia)", "url": "https://en.wikipedia.org/wiki/MV_Hondius_hantavirus_outbreak"},
+    {"name": "Andes Hantavirus Outbreak on a Cruise Ship, 2026 (NEJM, NEJMc2606496)", "url": "https://www.nejm.org/doi/full/10.1056/NEJMc2606496"}
   ]
 }
