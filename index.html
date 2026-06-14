@@ -182,7 +182,7 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
 
 <section>
   <div class="kicker">Outbreak — MV Hondius Andes hantavirus cluster</div>
-  <h2 id="outbreakTitle">Independent tracker · 13 cases · 3 deaths · Atlantic crossing complete</h2>
+  <h2 id="outbreakTitle">Independent tracker · 13 cases · 3 deaths · no new case since 25 May</h2>
   <p class="lede" id="outbreakLede">Loading situation summary…</p>
 
   <div class="hero" id="hero">
@@ -396,12 +396,12 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
 
   // Outbreak title + lede
   const t = data.totals, o = data.outbreak;
-  $('#outbreakTitle').textContent = `Independent tracker · ${t.total_cases} cases · ${t.deaths} deaths · Atlantic crossing`;
+  $('#outbreakTitle').textContent = `Independent tracker · ${t.total_cases} cases · ${t.deaths} deaths · no new case since 25 May`;
   $('#outbreakLede').textContent =
     `The Dutch-flagged ${o.ship}, operated by ${o.operator}, departed ${o.departure_port} on ${fmtDate(o.departure_date)} for an Antarctic itinerary. ` +
     `The first symptomatic passenger fell ill on 6 April. ${o.passengers_crew - o.crew} passengers disembarked across Saint Helena (24 Apr), Cabo Verde, and ${o.arrival_port} (${fmtDate(o.arrival_date)}, full disembarkation complete ${fmtDate(o.disembarkation_completed)}). ` +
-    `The vessel is expected to reach its final port, ${o.final_port}, on ${fmtDate(o.final_port_eta)} with crew only. ` +
-    `Cases have been reported in ${t.countries_affected} countries. ` +
+    `The vessel reached its final port, ${o.final_port}, on ${fmtDate(o.final_port_eta)} with crew only, completed disinfection, and returned to service in early June. ` +
+    `Cases have been reported in ${t.countries_affected} countries. The total has held at ${t.total_cases} since 25 May; the most recent change was the 10 June reclassification of the Tristan da Cunha case from probable to confirmed. ` +
     `Andes orthohantavirus is the only hantavirus with documented person-to-person transmission, but spread typically requires close, prolonged contact.`;
 
   // Hero stats
