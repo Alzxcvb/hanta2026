@@ -23,6 +23,7 @@
   --amber:#d4a017;
   --amber-dim:#8a6a10;
   --rust:#c84630;
+  --sage:#7a9e6a;
   --probe:#6b6b6b;
   --serif:Georgia,"Times New Roman",ui-serif,serif;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
@@ -101,6 +102,7 @@ td.notes{color:var(--dim);font-family:var(--sans);font-size:13px;line-height:1.4
 .badge.probable{background:rgba(107,107,107,.15);color:var(--probe);border:1px solid var(--probe)}
 .outcome-died{color:var(--rust);font-weight:600}
 .outcome-critical{color:var(--amber);font-weight:600}
+.outcome-recovering{color:var(--sage);font-weight:600}
 .pending{color:var(--dim);font-style:italic;font-family:var(--sans);font-size:13px;padding:18px 0;border-bottom:1px solid var(--line)}
 
 /* ======== COUNTRIES ======== */
@@ -115,6 +117,7 @@ td.notes{color:var(--dim);font-family:var(--sans);font-size:13px;line-height:1.4
 .poly-row:hover{background:var(--panel)}
 .poly-row .m{font-family:var(--sans);font-size:14px;color:var(--ink);border:none}
 .poly-row .p{font-family:var(--mono);font-size:18px;font-weight:600;color:var(--amber);font-variant-numeric:tabular-nums}
+.poly-row .p.resolved{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
 
 /* ======== FACT-CHECK ======== */
 .facts{margin-top:18px;display:flex;flex-direction:column;gap:14px}
@@ -124,6 +127,7 @@ td.notes{color:var(--dim);font-family:var(--sans);font-size:13px;line-height:1.4
 .verdict.false,.verdict.misleading{background:rgba(200,70,48,.15);color:var(--rust);border:1px solid var(--rust)}
 .verdict.unsupported,.verdict.speculative,.verdict.no-evidence{background:rgba(138,135,127,.15);color:var(--dim);border:1px solid var(--faint)}
 .verdict.partly-true{background:rgba(212,160,23,.15);color:var(--amber);border:1px solid var(--amber-dim)}
+.verdict.resolved{background:rgba(122,158,106,.15);color:var(--sage);border:1px solid var(--sage)}
 .fact-card .detail{font-size:13.5px;color:var(--ink);line-height:1.55}
 .fact-card .src{font-family:var(--mono);font-size:11px;color:var(--dim)}
 
@@ -189,7 +193,7 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
     <div class="stat"><div class="n" id="nCases">—</div><div class="l">Total cases</div><div class="sub" id="nCasesSub">— confirmed · — probable</div></div>
     <div class="stat deaths"><div class="n" id="nDeaths">—</div><div class="l">Deaths</div><div class="sub" id="nCfr">— % CFR</div></div>
     <div class="stat"><div class="n" id="nCountries">—</div><div class="l">Countries (residence)</div><div class="sub">aboard from 23 nationalities</div></div>
-    <div class="stat"><div class="n" id="nAboard">—</div><div class="l">Passengers + crew</div><div class="sub" id="nAboardSub">— passengers · — crew</div></div>
+    <div class="stat"><div class="n" id="nAboard">—</div><div class="l">Aboard · full voyage</div><div class="sub" id="nAboardSub">— passengers · — crew</div></div>
   </div>
 
   <div class="callout"><span class="callout-tag">Why this is being watched</span> Andes orthohantavirus is the <strong>only hantavirus with documented person-to-person transmission</strong>, though spread typically requires close, prolonged contact. WHO estimates the outbreak's effective reproduction number (R<sub>t</sub>) at <strong>0.7</strong> as of 22 May — below the 1.0 threshold for self-sustaining spread — and WHO and ECDC continue to assess the wider-population risk as <strong>extremely low</strong>.</div>
@@ -203,6 +207,8 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
     <div class="fact"><div class="k">Operator · flag</div><div class="v" id="fOp">—</div></div>
     <div class="fact"><div class="k">Departed</div><div class="v" id="fDep">—</div></div>
     <div class="fact"><div class="k">Arrived</div><div class="v" id="fArr">—</div></div>
+    <div class="fact"><div class="k">Cohort under investigation</div><div class="v" id="fCohort">—</div></div>
+    <div class="fact"><div class="k">Aboard at Tenerife (10 May)</div><div class="v" id="fTenerife">—</div></div>
   </div>
 
   <div class="map-wrap">
@@ -291,7 +297,7 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
 <section>
   <div class="kicker">Case line list</div>
   <h2>Detailed cases reported to WHO/ECDC</h2>
-  <p class="lede">Cases with patient-level detail from WHO DON599 (4 May 2026). Additional cases reported between 4 and 25 May — including a crew member in the Netherlands (22 May) and a Spanish national in Madrid (25 May) — are summarised below; national agencies have not yet released per-patient details.</p>
+  <p class="lede">Cases with patient-level detail from WHO DON599 (4 May 2026), with clinical status for Cases 3 and 9 updated from Table 1 of the Eurosurveillance outbreak investigation as amended on 9 July 2026. Additional cases reported between 4 and 25 May, including a crew member in the Netherlands (22 May) and a Spanish national in Madrid (25 May), are summarised below; national agencies have not released per-patient details for all of them.</p>
   <table id="caseTable" aria-label="Hantavirus case line list">
     <thead>
       <tr>
@@ -319,7 +325,7 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
 <section>
   <div class="kicker">Contact tracing — who is being monitored</div>
   <h2>653 contacts identified across 33 countries and territories — tracing formally closed</h2>
-  <p class="lede">WHO's end-of-outbreak notice (DON611, 2 July 2026) gives the final tally: 653 contacts across 33 countries, territories and areas — 317 high-risk contacts who completed quarantine and monitoring, and 336 low-risk contacts who completed self-monitoring. The widely-circulated 1,400–1,800 figure was never in any WHO, ECDC, or CDC document. The 42-day follow-up period concluded with no additional secondary cases detected, and WHO states the outbreak "no longer poses a public health risk and no further related transmission is expected."</p>
+  <p class="lede" id="contactsLede">Loading contact-tracing summary…</p>
   <div class="contacts" id="contacts"></div>
   <div class="contacts-note" id="contactsNote">—</div>
   <div class="incu" id="incuBox">
@@ -331,7 +337,7 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
 <section>
   <div class="kicker">Fact-check — claims circulating on social media</div>
   <h2>What the official sources actually say</h2>
-  <p class="lede">Several claims have spread across Threads and X over the past week. Below, each claim is matched against WHO, ECDC, and CDC source documents. Sources are linked in the panel below.</p>
+  <p class="lede">Claims that circulated on Threads and X during the outbreak, each matched against WHO, ECDC, and CDC source documents and, where the peer-reviewed investigation now settles the question, against Eurosurveillance. Sources are linked in the panel below.</p>
   <div class="facts" id="facts"></div>
 </section>
 
@@ -399,9 +405,10 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
   $('#outbreakTitle').textContent = `Independent tracker · ${t.total_cases} cases · ${t.deaths} deaths · no new case since 25 May`;
   $('#outbreakLede').textContent =
     `The Dutch-flagged ${o.ship}, operated by ${o.operator}, departed ${o.departure_port} on ${fmtDate(o.departure_date)} for an Antarctic itinerary. ` +
-    `The first symptomatic passenger fell ill on 6 April. ${o.passengers_crew - o.crew} passengers disembarked across Saint Helena (24 Apr), Cabo Verde, and ${o.arrival_port} (${fmtDate(o.arrival_date)}, full disembarkation complete ${fmtDate(o.disembarkation_completed)}). ` +
+    `${o.passengers_crew} people sailed on her, ${o.passengers} passengers and ${o.crew} crew, per the passenger list signed by the captain. ` +
+    `The first symptomatic passenger fell ill on 6 April. 32 passengers disembarked at Saint Helena between 22 and 24 April. The ship reached ${o.destination_port} on ${fmtDate(o.praia_arrival_date)} and ${o.arrival_port} on ${fmtDate(o.arrival_date)}, with ${o.aboard_at_tenerife} people still aboard: ${o.tenerife_passengers} passengers, ${o.tenerife_crew} crew and a medical team of ${o.tenerife_medical_team} that had joined at Praia. Repatriation flights to eight countries followed on 10 and 11 May. ` +
     `The vessel reached its final port, ${o.final_port}, on ${fmtDate(o.final_port_eta)} with crew only, completed disinfection, and returned to service in early June. ` +
-    `Cases have been reported in ${t.countries_affected} countries. The total held at ${t.total_cases} from 25 May onward; the last change was the 10 June reclassification of the Tristan da Cunha case from probable to confirmed. On 2 July 2026, WHO formally declared the outbreak over (DON611) after the final 653 identified contacts — 317 high-risk, 336 low-risk — completed quarantine or self-monitoring across 33 countries with no additional secondary cases detected. Of the 10 hospitalized cases, 8 have been discharged; 2 remain hospitalized, in South Africa and France. ` +
+    `Cases have been reported in ${t.countries_affected} countries. The total held at ${t.total_cases} from 25 May onward; the last change was the 10 June reclassification of the Tristan da Cunha case from probable to confirmed. On 2 July 2026, WHO formally declared the outbreak over (DON611) after the final 653 identified contacts, 317 high-risk and 336 low-risk, completed quarantine or self-monitoring across 33 countries with no additional secondary cases detected. Of the 10 hospitalized cases, 8 were discharged. The remaining 2 are recorded in the Eurosurveillance addendum of 9 July 2026 as recovering (Case 3, South Africa) and remaining in intensive care (Case 9, France). ` +
     `Andes orthohantavirus is the only hantavirus with documented person-to-person transmission, but spread typically requires close, prolonged contact.`;
 
   // Hero stats
@@ -418,6 +425,8 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
   $('#fOp').textContent = `${o.operator} · ${o.flag}-flagged`;
   $('#fDep').textContent = `${o.departure_port} · ${fmtDate(o.departure_date)}`;
   $('#fArr').textContent = `${o.arrival_port} · ${fmtDate(o.arrival_date)}`;
+  $('#fCohort').textContent = `${o.passengers_crew} aboard · ${o.passengers} passengers · ${o.crew} crew`;
+  $('#fTenerife').textContent = `${o.aboard_at_tenerife} aboard · ${o.tenerife_passengers} passengers · ${o.tenerife_crew} crew · ${o.tenerife_medical_team} medical team`;
 
   // Country dots on map (equirectangular projection)
   const proj = (lng, lat) => ({
@@ -462,6 +471,8 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
   const outcomeCell = c => {
     if(c.outcome === 'died') return `<span class="outcome-died">Died ${fmtDateShort(c.outcome_date)}</span>`;
     if(c.outcome === 'critical') return `<span class="outcome-critical">Critical · ICU</span>`;
+    if(c.outcome === 'recovering') return `<span class="outcome-recovering">Recovering</span>`;
+    if(c.outcome === 'icu') return `<span class="outcome-critical">In intensive care</span>`;
     return c.outcome || '—';
   };
   const renderTable = () => {
@@ -518,6 +529,7 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
     $('#contacts').innerHTML = rows.map(([k,v]) =>
       `<div class="contact-row"><div class="k">${k}</div><div class="v">${v}</div></div>`
     ).join('');
+    $('#contactsLede').textContent = c.summary;
     $('#contactsNote').textContent = c.limitations;
   }
 
@@ -529,7 +541,8 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
       `<strong>WHO (DON601):</strong> typical ${ip.who_typical}, potential range ${ip.who_range}. ` +
       `<strong>CDC:</strong> ${ip.cdc_range}. ` +
       (ip.safe_release ? `${ip.safe_release} ` : '') +
-      `<span style="color:var(--dim)">${ip.note}</span>`;
+      (ip.presymptomatic ? `<br><br><strong>Infectious before symptoms:</strong> ${ip.presymptomatic} ` : '') +
+      `<br><br><span style="color:var(--dim)">${ip.note}</span>`;
   }
 
   // Fact-check cards
@@ -552,7 +565,7 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
   $('#polyGrid').innerHTML = allMarkets.map(m => `
     <a class="poly-row" href="${m.url}" target="_blank" rel="noopener">
       <span class="m">${m.market}</span>
-      <span class="p">${Math.round(m.yes_probability * 100)}%</span>
+      <span class="p${m.resolved ? ' resolved' : ''}">${m.resolved ? 'Settled ' + m.resolved : Math.round(m.yes_probability * 100) + '%'}</span>
     </a>
   `).join('');
 
