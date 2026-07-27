@@ -34,7 +34,7 @@ Edit `data.json` and commit. The relevant fields:
 - `last_updated` — ISO timestamp shown in the header
 - `totals` — top-line case/death numbers
 - `outbreak` — ship facts. `passengers_crew` / `passengers` / `crew` are the **full voyage cohort** (182 = 121 + 61) from the captain-signed passenger list. `aboard_at_tenerife` and its `tenerife_*` fields are the 10 May snapshot (147 = 83 + 60 + 4 medical team). Don't conflate the two.
-- `cases` — per-patient line list (only includes cases with publicly-released detail). `outcome` accepts `died`, `critical`, `icu`, `recovering`; anything else renders as raw text.
+- `cases` — per-patient line list (only includes cases with publicly-released detail). `outcome` accepts `died`, `critical`, `icu`, `recovering`, `recovered`; anything else renders as raw text.
 - `additional_cases_note` — running dated log, appended to (never rewritten) as the story develops
 - `contacts_traced.summary` — renders as the contact-tracing section lede
 - `incubation_period.presymptomatic` — optional; renders as the "Infectious before symptoms" line

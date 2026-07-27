@@ -103,6 +103,7 @@ td.notes{color:var(--dim);font-family:var(--sans);font-size:13px;line-height:1.4
 .outcome-died{color:var(--rust);font-weight:600}
 .outcome-critical{color:var(--amber);font-weight:600}
 .outcome-recovering{color:var(--sage);font-weight:600}
+.outcome-recovered{color:var(--sage);font-weight:600}
 .pending{color:var(--dim);font-style:italic;font-family:var(--sans);font-size:13px;padding:18px 0;border-bottom:1px solid var(--line)}
 
 /* ======== COUNTRIES ======== */
@@ -472,6 +473,7 @@ footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-fa
     if(c.outcome === 'died') return `<span class="outcome-died">Died ${fmtDateShort(c.outcome_date)}</span>`;
     if(c.outcome === 'critical') return `<span class="outcome-critical">Critical · ICU</span>`;
     if(c.outcome === 'recovering') return `<span class="outcome-recovering">Recovering</span>`;
+    if(c.outcome === 'recovered') return `<span class="outcome-recovered">Recovered · discharged</span>`;
     if(c.outcome === 'icu') return `<span class="outcome-critical">In intensive care</span>`;
     return c.outcome || '—';
   };
