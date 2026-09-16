@@ -3,6 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://cloudflareinsights.com https://static.cloudflareinsights.com; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<!-- Clickjacking guard. frame-ancestors/X-Frame-Options cannot be set from a
+     <meta> tag or from GitHub Pages, so the page refuses to render when framed.
+     See SECURITY-HEADERS.md for the Cloudflare rule that does this properly. -->
+<style id="antiframe">html{display:none}</style>
+<script>
+  if (self === top) {
+    document.getElementById("antiframe").remove();
+  } else {
+    top.location = self.location;
+  }
+</script>
 <title>HANTA2026 — MV Hondius Andes Hantavirus Tracker</title>
 <meta name="description" content="Independent tracker of the 2026 MV Hondius Andes hantavirus cluster. Cases, deaths, ship route, contact tracing, fact-check, and Polymarket odds. Sources: WHO, ECDC, CDC.">
 <meta name="theme-color" content="#0a0a0c">
